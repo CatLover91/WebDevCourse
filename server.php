@@ -211,7 +211,7 @@
 
 
     echo "<div class=\"large-4 medium-12 columns\">
-        <form method=\"post\ action=\"".htmlspecialchars($_SERVER["PHP_SELF"])."\">
+        <form method=\"post\" action=\"".htmlspecialchars($_SERVER["PHP_SELF"])."\">
             <input type=\"text\" placeholder=\"Username\" name=\"username\"/><br/>
             <span class=\"error\">* ".$usernameErr."</span>
             <input type=\"text\" placeholder=\"Password\" name=\"password\"/><br/>
