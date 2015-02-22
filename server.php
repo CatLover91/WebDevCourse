@@ -10,7 +10,7 @@
 
     $sqlservername = "localhost";
     $sqlusername = "admin";
-    $sqlpassword = "spring2015";
+    $sqlpassword = "5pR1nG2OlS";
 
     $username = "";
     $password = "";
@@ -33,6 +33,8 @@
     } else {
         echo "Error creating database: ".mysqli_error($conn);
     }
+
+    $conn->select_db("NGcs418");
 
     //=================   Create User Table  ===============================
 
