@@ -214,7 +214,7 @@
         <form method=\"post\" action=\"".htmlspecialchars($_SERVER["PHP_SELF"])."\">
             <input type=\"text\" placeholder=\"Username\" name=\"username\"/><br/>
             <span class=\"error\">* ".$usernameErr."</span>
-            <input type=\"text\" placeholder=\"Password\" name=\"password\"/><br/>
+            <input type=\"password\" placeholder=\"Password\" name=\"password\"/><br/>
             <span class=\"error\">* ".$passwordErr."</span>
             <a href=\"#\" class=\"small button\" type=\"submit\">Log in</a>
         </form>
