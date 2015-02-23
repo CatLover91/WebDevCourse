@@ -83,12 +83,12 @@
     ============================================================================
     -->
     <div class="parallax-content" id="adjust-padding">
-        <p><a href="http://github.com/catlover91/ODUCS418">Github Repo</a><br/>You can find the code for this website here.</p>
-        <div class="row">
-            
-            <script type="text/javascript" src="server.php"></script>
-
-        </div>
+      <p><a href="http://github.com/catlover91/ODUCS418">Github Repo</a><br/>You can find the code for this website here.</p>
+      <div class="row">
+        <?php
+          include_once "server.php";
+        ?>
+      </div>
     </div>
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
