@@ -64,3 +64,26 @@ password: 5pR1nG2OlS
 The home page for your web site must be located in a file named "index.php". In addition to the files for the web site, you should also provide a backup of your MySQL database for importing for your project demo. This can be accomplished in the phpMyAdmin Export tab. The resulting file should be a .sql file. This file will be loaded into a MySQL instance on demo day, so verification of the integrity of the dump (i.e., try to import it using phpMyAdmin) is encouraged. Include this file in the root of your project repository as milestone1dump.sql. At least 10 questions and 5 users should be included in the dump.
 
 We will likely using a [Docker](https://www.docker.com/)-based deployment scheme on demo day. This system will be equipped with the latest PHP, mySQL, and Apache versions. The instance will also expect the milestone1dump.sql and index.php files to be in the root of your project repository and will assume you used the above credentials for interaction with your database.
+
+## Project Milestone 2
+
+### Requirements (Base)
+1. All Base Requirements from milestone 1 must be met to obtain full credit on milestone 2.
+
+#### Voting
+1. For each answer provided by users, provide the ability for other registered users to vote up or down the answer.
+2. The "value" attributed to an answer shall (for simplicity) be assigned based on the sum of "votes up" and "votes down" where a vote up contributes +1 and a vote down contributes -1. 
+3. The value must be displayed on the question page.
+4. The up and down votes must be stored in the database and associated with the ANSWER.
+5. Answers that are not selected by the ASKER shall continue to be displayed, even after the ASKER has marked another answer as correct. The unmarked answers shall be placed secondarily to the marked answer in the descending order of value (see above).
+  * For example, if there are four answers to a question with answers two of four selected by the asker and the answers receiving vote counts of 3, 2, 1, 4, respectively and inclusive of the selected answer, the order displays should be Q2, Q4, Q3, and Q1.
+6. The question's "value" must be displayed in the question display interface, as determined by the votes.
+7. A registered user must not be able to vote on an answer twice. 
+8.  Registered users can "vote up" or "vote down" questions, which provide the basis for a question's "value", much like answers.
+9. The questions with the top 5 values must be displayed on your web site's home page.
+
+#### User Profiles
+1. An interface must be provided to allow a user to upload a profile picture (avatar).
+2. A user's avatar should be displayed alongside the question on a question page when the user is the asker. When a user provides an answer to a question, the answerer's avatar must be displayed alongside the answer.
+3. Create a PROFILE PAGE that uses PHP query parameters to build the page's contents. This query parameter must indicate a value that can be used to uniquely query the user from your database. On this profile page, display the user's username, avatar, and all questions asked along with the corresponding question's current value. 
+4. Provide an HTML form for new users to register for your Q&A website by providing a username and password. When a username is provided for registration that already exists in your database, reject the rejections and ask the user to select another.
