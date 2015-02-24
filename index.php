@@ -85,9 +85,16 @@
     <div class="parallax-content" id="adjust-padding">
       <p><a href="http://github.com/catlover91/ODUCS418">Github Repo</a><br/>You can find the code for this website here.</p>
       <div class="row">
-        <?php
-          include_once "server.php";
-        ?>
+        <div class="large-4 medium-12 columns">
+          <?php
+            include_once "login.php";
+          ?>
+        </div>
+        <div class="large-8 medium-12 columns">
+          <?php
+            include_once "questions.php";
+          ?>
+        </div>
       </div>
     </div>
     <script src="js/vendor/jquery.js"></script>
