@@ -216,7 +216,7 @@
             <span class=\"error\">* ".$usernameErr."</span>
             <input type=\"password\" placeholder=\"Password\" name=\"password\"/><br/>
             <span class=\"error\">* ".$passwordErr."</span>
-            <a href=\"#\" class=\"small button\" type=\"submit\">Log in</a>
+            <input type=\"submit\" class=\"small button\">Log in</a>
         </form>
     </div>";
 
