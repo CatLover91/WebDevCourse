@@ -7,3 +7,8 @@
 meteor-platform
 autopublish
 insecure
+accounts-ui
+accounts-password
+coffeescript
+mquandalle:jade
+fortawesome:fontawesome
