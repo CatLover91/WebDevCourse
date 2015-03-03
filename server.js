@@ -7,7 +7,7 @@ if (Meteor.isClient) {
   Meteor.subscribe("questions");
   Meteor.subscribe("answers");
 
-  Template.body.events({x
+  Template.body.events({
     "submit .new-question": function (event) {
 
       var text = event.target.text.value;
@@ -46,7 +46,7 @@ if (Meteor.isClient) {
   Template.answer.events({
     "click .toggle-best": function () {
       // Set the checked property to the opposite of its current value
-      Meteor.call("setBest", this._id, ! this.best);
+      Meteor.call("setBest", this._id);
     },
     "click .up-vote": function () {
       Meteor.call("upVote", this._id);
@@ -68,14 +68,14 @@ Meteor.methods({
     }
 
     Questions.insert({
-        asker: Meteor.userId(), //or Meteor.user().username ??
+        asker: Meteor.userId(),
         title: title,
         content: content,
         bestAnswer: null,
         timestamp: new Date()
     });
   },
-  addAnswer: function(title, content) {
+  addAnswer: function(title, content, question) {
     if (! Meteor.userId()) {
       throw new Meteor.Error("not0authorized");
     }
@@ -87,10 +87,11 @@ Meteor.methods({
       content: content,
       best: false,
       value: 0,
+      voters: {},
       timestamp: new Date()
     });
   },
-  setBest: function (answerId, setBest) {
+  setBest: function (answerId) {
     var answer = Answers.findOne(answerId);
     var question = Questions.findOne(answer.question)
 
@@ -120,11 +121,69 @@ Meteor.methods({
       Answers.update(answerId, { $set: {best: true} });
     }
   },
-  upVote: function (answer) {
+  upVote: function (answerId) {
+    var answer = Answers.findOne(answerId);
 
+    // users can't vote on their own answer
+    if (answer.answerer === Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    // Did you already vote?
+    if(Meteor.userId() in answer.voters) {
+      // Yes you did
+
+      if(answer.voters.userId() == true) {
+        // retract vote
+
+        answer.value -= 1;
+
+        Answers.update(answerId, { $set: {value: answer.value}, $unset: {voters[Meteor.userId()]: ""} })
+
+      } else {
+        // change vote
+
+        answer.value += 2;
+
+        Answers.update(answerId, { $set: {value: answer.value}, $set: {voters[Meteor.userId()]: true} });
+      }
+    } else {
+      // No you didn't
+      answer.value += 1;
+      Answers.update(answerId, { $set: {value: answer.value}, $set {voters[Meteor.userId()]: true} })
+    }
   },
-  downVote: function (answer) {
+  downVote: function (answerId) {
+    var answer = Answers.findOne(answerId);
 
+    // users can't vote on their own answer
+    if (answer.answerer === Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    // Did you already vote?
+    if(Meteor.userId() in answer.voters) {
+      // Yes you did
+
+      if(answer.voters.userId() == false) {
+        // retract vote
+
+        answer.value += 1;
+
+        Answers.update(answerId, { $set: {value: answer.value}, $unset: {voters[Meteor.userId()]: ""} })
+
+      } else {
+        // change vote
+
+        answer.value -= 2;
+
+        Answers.update(answerId, { $set: {value: answer.value}, $set: {voters[Meteor.userId()]: false} });
+      }
+    } else {
+      // No you didn't
+      answer.value -= 1;
+      Answers.update(answerId, { $set: {value: answer.value}, $set {voters[Meteor.userId()]: false} })
+    }
   }
 });
 
