@@ -137,18 +137,17 @@ Meteor.methods({
         // retract vote
 
         answer.value -= 1;
-
         Answers.update(answerId, { $set: {value: answer.value}, $unset: {voters[Meteor.userId()]: ""} })
 
       } else {
         // change vote
 
         answer.value += 2;
-
         Answers.update(answerId, { $set: {value: answer.value}, $set: {voters[Meteor.userId()]: true} });
       }
     } else {
       // No you didn't
+
       answer.value += 1;
       Answers.update(answerId, { $set: {value: answer.value}, $set {voters[Meteor.userId()]: true} })
     }
@@ -169,18 +168,16 @@ Meteor.methods({
         // retract vote
 
         answer.value += 1;
-
         Answers.update(answerId, { $set: {value: answer.value}, $unset: {voters[Meteor.userId()]: ""} })
-
       } else {
         // change vote
 
         answer.value -= 2;
-
         Answers.update(answerId, { $set: {value: answer.value}, $set: {voters[Meteor.userId()]: false} });
       }
     } else {
       // No you didn't
+
       answer.value -= 1;
       Answers.update(answerId, { $set: {value: answer.value}, $set {voters[Meteor.userId()]: false} })
     }
