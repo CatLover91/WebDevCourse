@@ -1,35 +1,58 @@
-<template name="answer">
-    <a href="#" data-reveal-id={{answerid}} class="secondary button">
-        <div class="row">
-            <div class="small-1 columns">
-                if($answerBest == "y"){
-                    //  display best
-                } elseif($username != $answerAuthor) {
-                    //  display not best
-                } else {
-                    //  display not best as button
-                }
-            </div>
-            <div class="small-2 columns">
-                //if already voted
-                //  display vote
-                //  display vote level
-                //else
-                //  display vote level
-            </div>
-            <div class="small-9 solumns">
-                <h3>{{answerTitle}}</h3>
-                <p>{{answerContent}}</p>
-            </div>
-            <div class="small-12 columns">
-                {{profile}}
-            </div>
+@extends('app')
+
+@section('content')
+    <div id="row-fluid color-block answer">
+        <div class="col-xs-1">
+            @if(Auth::user() === $answer.question.Author)
+                @if($answer.best)
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-1x"></i>
+                        <i class="fa fa-check fa-stack-1x"></i>
+                    </span>
+                @else
+                    <i class="fa fa-square-o fa-lg"></i>
+                @endif
+            @else
+                @if($answer.best)
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-1x"></i>
+                        <i class="fa fa-check fa-stack-1x"></i>
+                    </span>
+                @else
+                    <i class="fa fa-square-o fa-lg"></i>
+            @endif
         </div>
-    </a>
-    
-    <div id={{answerid}} class="reveal-modal" data-reveal>
-        <h2>{{answerTitle}}</h2>
-        <p>{{answerContent}}</p>
-        <a class="close-reveal-modal">&#215;</a>
+        <div class="col-xs-2">
+            @if(Auth::guest() || Auth::user() != $answer.Author)
+                <label>{{ $vote }}</label>
+            @else
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square fa-stack-2x"></i>
+                    <i class="fa fa-chevron-up fa-stck-1x"></i>
+                </span>
+                <label>{{ $vote }}</label>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square fa-stack-2x"></i>
+                    <i class="fa fa-chevron-down fa-stack-1x"></i>
+                </span>
+            @endif
+        </div>
+        <div class="col-xs-7">
+            <h4>{{ $title }}</h4>
+            <p>{{ $content }}</p>
+        </div>
+        <div class="col-xs-2">
+            @if($Author.hasProfile())
+                <!--Display Profile Photo-->
+            @else
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-x2"></i>
+                    <i class="fa fa-user fa-stack-1x"></i>
+                </span>
+            @endif
+        </div>
+        <div class="col-xs-12">
+            <label>{{ $author }}</label>
+        </div>
     </div>
-</template>
+@endsection
