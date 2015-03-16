@@ -5,7 +5,7 @@
 @foreach($questions as $question)
     <div class="row-fluid color-box">
         <div class="col-xs-2">
-            @if(Auth::guest() || Auth::user() != $question.Author)
+            @if(Auth::guest() || Auth::user()->id === $question.asker_id)
                 <label>{{ $question.Vote }}</label>
             @else
                 <span class="fa-stack fa-lg">
