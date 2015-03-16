@@ -24,7 +24,7 @@
         </div>
         <div class="col-xs-2">
             @if(Auth::guest() || Auth::user() != $answer.Author)
-                <label>{{ $vote }}</label>
+                <label>{{ $answer.vote }}</label>
             @else
                 <span class="fa-stack fa-lg">
                     <i class="fa fa-square fa-stack-2x"></i>
@@ -38,21 +38,27 @@
             @endif
         </div>
         <div class="col-xs-7">
-            <h4>{{ $title }}</h4>
-            <p>{{ $content }}</p>
+            <h4>{{ $answer.title }}</h4>
+            <p>{{ $answer.content }}</p>
         </div>
         <div class="col-xs-2">
-            @if($Author.hasProfile())
-                <!--Display Profile Photo-->
+            @if($Author.hasAvatar)
+                <a href={{ $previous."/user/".$answer.answerer_id."/profile" }}>
+                    <!--Display Profile Photo-->
+                </a>
             @else
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-square-o fa-stack-x2"></i>
-                    <i class="fa fa-user fa-stack-1x"></i>
-                </span>
+                <a href={{ $previous."/user/".$answer.answerer_id."/profile" }}>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-x2"></i>
+                        <i class="fa fa-user fa-stack-1x"></i>
+                    </span>
+                </a>
             @endif
         </div>
         <div class="col-xs-12">
-            <label>{{ $author }}</label>
+            <a href={{ $previous."/user/".$answer.answerer_id."/profile" }}>
+                <label>{{ $author.name }}</label>
+            </a>
         </div>
     </div>
 @endsection
