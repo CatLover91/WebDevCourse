@@ -30,7 +30,7 @@
                     <i class="fa fa-user fa-stack-1x"></i>
                 </span>
             @endif
-            {{ $username }}
+            <label>{{ $username }}</label>
             <a href="{{ url('/auth/logout') }}">Logout</a>
 
         @endif
@@ -38,7 +38,29 @@
     <div class="col-xs-8">
         <div class="row-fluid color-box ask">
         @if (Auth::check())
-            <!--Ask a question-->
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/question/add') }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">Title</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="title">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">Content</label>
+                    <div class="col-xs-6">
+                        <textarea type="text" class="form-control" rows="20" cols="60" name="content"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-6 col-xs-offset-4">
+                        <button type="submit" class="btn btn-primary">Ask</button>
+                    </div>
+                </div>
+            </form>
         @endif
         </div>
         @include('view.questions', $topQuestions)

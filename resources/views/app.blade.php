@@ -8,12 +8,10 @@
     <link rel="stylesheet" href="css/foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
       
-    <link rel="shortcut icon" href="img/N.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('N.ico') }}" type="image/x-icon" />
 
     <!-- Custom styles for this template -->
-    <link href="css/default.css" rel="stylesheet">
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-          
     
     <!-- Google Font: Lobster -->
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>

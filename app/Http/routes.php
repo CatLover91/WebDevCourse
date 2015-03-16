@@ -12,45 +12,25 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('question', 'QuestionController@showQuestion');
+Route::get('user/{user_id}/profile', 'UserController@showProfile');
 
-Route::get('questions', 'questionController@showQuestions');
-Route::get('answers', 'answerController@showAnswers');
-Route::get('profile', 'profileeController@showProfile');
+Route::post('user/{user_id}/addAvatar', 'UserController@addAvatar);
 
-Route::post(
+Route::post('question/add', 'QuestionController@addQuestion');
+Route::post('question/{question_id}/upVote', 'QuestionController@upVote');
+Route::post('question/{question_id}/downVote', 'QuestionController@downVote');
+Route::post('question/{question_id}/removeVote', 'QuestionController@removeVote');
+
+Route::post('question/{question_id}/answer/add', 'AnswerController@addAnswer');
+Route::post('question/{question_id}/answer/{answer_id}/upVote', 'QuestionController@upVote');
+Route::post('question/{question_id}/answer/{answer_id}/downVote', 'QuestionController@downVote');
+Route::post('question/{question_id}/answer/{answer_id}/removeVote', 'QuestionController@removeVote');
+Route::post('question/{question_id}/answer/{answer_id}/markBest', 'QuestionController@markBest');
+Route::post('question/{question_id}/answer/{answer_id}/unmarkBest', 'QuestionController@unmarkBest');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+	// dont need email verification
+    //'password' => 'Auth\PasswordController',
 ]);
-
-<?php
-
-/*
-Route::get('/', 'HomeController@ShowIndex');
-Route::get('syllabary', 'SyllabaryController@ShowGrid');
-Route::get('about', 'HomeController@ShowAbout');
-Route::get('sleep', function() { return Redirect::away('http://Ncnl.tumblr.com'); });
-*/
-
-Route::get('/', 'HomeController@ShowIndex');
-Route::get('about', 'HomeController@ShowAbout');
-
-Route::get('syllabary', 'SyllabaryController@ShowGrid');
-Route::post('syllabary/{syllabaryId}/column/add', 'SyllabaryController@AddColumn');
-Route::post('syllabary/{syllabaryId}/column/{columnIndex}/remove', 'SyllabaryController@RemoveColumn');
-Route::post('syllabary/{syllabaryId}/row/add', 'SyllabaryController@AddRow');
-Route::post('syllabary/{syllabaryId}/row/{rowIndex}/remove', 'SyllabaryController@RemoveRow');
-
-Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function()
-{
-	Route::get('login', 'AuthController@ShowLogin');
-	Route::post('login', 'AuthController@DoLogin');
-});
-
-/*
-Route::controllers(
-[
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
-*/
