@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@index');
 Route::get('question', 'QuestionController@showQuestion');
 Route::get('user/{user_id}/profile', 'UserController@showProfile');
 
-Route::post('user/{user_id}/addAvatar', 'UserController@addAvatar);
+Route::post('user/{user_id}/addAvatar', 'UserController@addAvatar');
 
 Route::post('question/add', 'QuestionController@addQuestion');
 Route::post('question/{question_id}/upVote', 'QuestionController@upVote');
