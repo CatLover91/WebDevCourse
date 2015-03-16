@@ -30,7 +30,7 @@
                     <i class="fa fa-square fa-stack-2x"></i>
                     <i class="fa fa-chevron-up fa-stck-1x"></i>
                 </span>
-                <label>{{ $vote }}</label>
+                <label>{{ $answer.vote }}</label>
                 <span class="fa-stack fa-lg">
                     <i class="fa fa-square fa-stack-2x"></i>
                     <i class="fa fa-chevron-down fa-stack-1x"></i>
