@@ -12,14 +12,20 @@
         </div>
         <div class="col-xs-12">
             @if($hasProfile)
-                <!--Display Profile Photo-->
+                <a href={{ $previous."/user/".$question.asker_id."/profile" }}>
+                    <!--Display Profile Photo-->
+                </a>
             @else
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-square-o fa-stack-x2"></i>
-                    <i class="fa fa-user fa-stack-1x"></i>
-                </span>
+                <a href={{ $previous."/user/".$question.asker_id."/profile" }}>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-x2"></i>
+                        <i class="fa fa-user fa-stack-1x"></i>
+                    </span>
+                </a>
             @endif
-            <label>{{ $author.name }}</label>
+            <a href={{ $previous."/user/".$question.asker_id."/profile" }}>
+                <label>{{ $author.name }}</label>
+            </a>
         </div>
     @else
         <div class="col-xs-2">
@@ -39,14 +45,20 @@
         </div>
         <div class="col-xs-12">
             @if($author.hasProfile)
-                <!--Display Profile Photo-->
+                <a href={{ $previous."/user/".$question.asker_id."/profile" }}>
+                    <!--Display Profile Photo-->
+                </a>
             @else
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-square-o fa-stack-x2"></i>
-                    <i class="fa fa-user fa-stack-1x"></i>
-                </span>
+                <a href={{ $previous."/user/".$question.asker_id."/profile" }}>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-x2"></i>
+                        <i class="fa fa-user fa-stack-1x"></i>
+                    </span>
+                </a>
             @endif
-            <label>{{ $author.name }}</label>
+            <a href={{ $previous."/user/".$question.asker_id."/profile" }}>
+                <label>{{ $author.name }}</label>
+            </a>
         </div>
         <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
