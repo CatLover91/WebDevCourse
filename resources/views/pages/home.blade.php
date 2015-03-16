@@ -23,16 +23,21 @@
             <a href="{{ url('/auth/register') }}">Register</a>
         @else
             @if($hasProfile)
-            <!--Show Profile Pic-->
+            <a href={{ $previous."/user/".Auth::user()->id."/profile" }}>
+                 <!--Show Profile Pic-->
+            </a>
             @else
+            <a href={{ $previous."/user/".Auth::user()->id."/profile" }}>
                 <span class="fa-stack fa-lg">
                     <i class="fa fa-square-o fa-stack-2x"></i>
                     <i class="fa fa-user fa-stack-1x"></i>
                 </span>
+            </a>
             @endif
-            <label>{{ $username }}</label>
+            <a href={{ $previous."/user/".Auth::user()->id."/profile" }}>
+                 <label>{{ $username }}</label>
+            </a>
             <a href="{{ url('/auth/logout') }}">Logout</a>
-
         @endif
     </div>
     <div class="col-xs-8">
