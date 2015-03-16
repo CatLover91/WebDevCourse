@@ -25,5 +25,7 @@
     @endif
     {{ $userName }}
 </div>
-@include('view.questions', $profileQuestions)
+@foreach($questions as $question)
+    @include('view.questionlite', $question)
+@endforeach
 @endsection
