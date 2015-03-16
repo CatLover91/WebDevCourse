@@ -68,7 +68,9 @@
             </form>
         @endif
         </div>
-        @include('view.questions', $topQuestions)
+        @foreach($questions as $question)
+             @include('view.questionlite', $question)
+        @endforeach
     </div>
 </div>
 @endsection
