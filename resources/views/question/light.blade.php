@@ -19,6 +19,6 @@
         <p>{{ $question.contentLite }}</p>
     </div>
     <div class="col-xs-12">
-        @include('view.profilelite', $author)
+        @include('view.profile.light', $author)
     </div>
 </div>
