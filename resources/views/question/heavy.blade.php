@@ -8,21 +8,7 @@
             <p>{{ $question.content }}</p>
         </div>
         <div class="col-xs-12">
-            @if($hasProfile)
-                <a href={{ $previous."/user/".$question.asker_id."/profile" }}>
-                    <!--Display Profile Photo-->
-                </a>
-            @else
-                <a href={{ $previous."/user/".$question.asker_id."/profile" }}>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-square-o fa-stack-x2"></i>
-                        <i class="fa fa-user fa-stack-1x"></i>
-                    </span>
-                </a>
-            @endif
-            <a href={{ $previous."/user/".$question.asker_id."/profile" }}>
-                <label>{{ $author.name }}</label>
-            </a>
+            @include('view.profile.light', $question.asker_id)
         </div>
     @else
         <div class="col-xs-2">
@@ -41,21 +27,7 @@
             <p>{{ $question.content }}</p>
         </div>
         <div class="col-xs-12">
-            @if($author.hasProfile)
-                <a href={{ $previous."/user/".$question.asker_id."/profile" }}>
-                    <!--Display Profile Photo-->
-                </a>
-            @else
-                <a href={{ $previous."/user/".$question.asker_id."/profile" }}>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-square-o fa-stack-x2"></i>
-                        <i class="fa fa-user fa-stack-1x"></i>
-                    </span>
-                </a>
-            @endif
-            <a href={{ $previous."/user/".$question.asker_id."/profile" }}>
-                <label>{{ $author.name }}</label>
-            </a>
+            @include('view.profile.light', $question.asker_id)
         </div>
         <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
