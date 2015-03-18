@@ -36,14 +36,6 @@ Route::controllers([
     //'password' => 'Auth\PasswordController',
 ]);
 
-Form::macro('upVote', function($voted) {
-    
-    <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x"></i>
-        <i class="fa fa-chevron-up fa-stck-1x"></i>
-    </span>
-}
-            
 Form::macro('vote', function($voted, $up) {
     if($voted) {
         $class = ' voted';
@@ -62,7 +54,7 @@ Form::macro('vote', function($voted, $up) {
             <i class="fa fa-chevron-'.$icon.' fa-stck-1x"></i>
         </span>
     </button>';
-}
+});
 
 Form::macro('best', function($marked) {
     if($marked) {
@@ -83,8 +75,8 @@ Form::macro('best', function($marked) {
     } else {
         $icon = 'down';
     }
-    return <span class="fa-stack fa-lg">
+    return '<span class="fa-stack fa-lg">
         <i class="fa fa-square-o fa-stack-1x"></i>
         <i class="fa fa-check fa-stack-1x"></i>
-    </span>;
-}
+    </span>';
+});
