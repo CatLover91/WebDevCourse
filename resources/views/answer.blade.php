@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <div id="row-fluid color-block answer">
+    <div id="row-fluid color-block answer" id="{{ $answer->user_id }}">
         <div class="col-xs-2">
             @if(Auth::user()->id === $answer->question()->user()->id)
                 @if($answer.best)

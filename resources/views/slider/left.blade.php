@@ -1,5 +1,10 @@
-<a href={{ $previous }}>
-    <div class="col-xs-2 color-box slider-left">
-        <i class="fa fa-chevron-right"></i>
+@if(strlen($previous) === 0)
+    <div class="col-xs-2 slider-left">
     </div>
-</a>
+@else
+    <a href={{ $previous }}>
+        <div class="col-xs-2 slider-left">
+            <i class="fa fa-chevron-right"></i>
+        </div>
+    </a>
+@endif

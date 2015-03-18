@@ -37,13 +37,13 @@ Route::controllers([
 ]);
 
 Form::macro('vote', function($voted, $up) {
-    if($voted) {
+    if ($voted) {
         $class = ' voted';
     } else {
         $class = '';
     }
     
-    if($up) {
+    if ($up) {
         $icon = 'up';
     } else {
         $icon = 'down';
@@ -57,7 +57,7 @@ Form::macro('vote', function($voted, $up) {
 });
 
 Form::macro('best', function($marked) {
-    if($marked) {
+    if ($marked) {
         return '<button type="submit" class="btn btn-success"> 
             <span class="fa-stack fa-lg">
                 <i class="fa fa-square-o fa-stack-1x"></i>

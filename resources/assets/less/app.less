@@ -7,103 +7,62 @@ body, label, .checkbox label {
 	font-weight: 300;
 }
 
-#@{color-box-id}.color-box(@color1, @color2, @color3, @color4, @color5) {
-    .navbar {
-        background-color: @color2;
-        .h1,
-        .label {
-            color: @color1;
-        }
-        .fa-github {
-            color: @color3;
-        }
-        .fa-twitter {
-            color: @color4;
-        }
-        .fa-circle {
-            color: @color5;
-        }
-        .about-me-text,
-        .dropdown-menu{
-            color: @color2;
-        }
+.randomColor() {
+    @random
+}
+
+.loop(@counter) when (@counter > 0) {
+    .loop((@counter - 1));
+    #@{counter} {
+        .randomColor();
+        @color1 = @random;
     }
-    .splash {
-        background-color: @color1;
-        .h1 {
-            color: @color2;
-        }
-        .p {
-            color: @color3;
-        }
-    }
-    .question {
-        background-color: @color1;
-        .fa-square,
-        .fa-square-o {
-            color: @color2   
-        }
-        .label,
-        .p,
-        .h2{
-            color: @color2;
-            .positive {
-                color: @color4;
-            }
-            .negative {
-                color: @color5;
-            }
-        }
-        .fa-chevron-up {
-            color: @color1;
-            .selected {
-                color: @color4;
-            }
-        }
-        .fa-chevron-down {
-            color: @color1;
-            .selected {
-                color: @color5;
-            }
-        }
-        .fa-user {
-            color: @color1;
-        }
-    }
-    .answer {
-        background-color: @color1;
-        .fa-check{
-            color: @color3;
-        }
-        .fa-square,
-        .fa-square-o {
-            color: @color 2   
-        }
-        .label,
-        .p,
-        .h4{
-            color: @color2;
-            .positive {
-                color: @color4;
-            }
-            .negative {
-                color: @color5;
-            }
-        }
-        .fa-chevron-up {
-            color: @color1;
-            .selected {
-                color: @color4;
-            }
-        }
-        .fa-chevron-down {
-            color: @color1;
-            .selected {
-                color: @color5;
-            }
-        }   
-    }
-    .profile {
-    }
-    
-    
+}
+
+@color2 = #FFFFFF;
+@color3 = #000000;
+@color4 = #BBBBBB;
+
+.fa-chevron-up .voted,
+.fa-chevron-down .voted,
+.fa-check,
+.slider-left {
+    color: @color1;
+} 
+.question,
+.answer,
+.profile,
+.slider-left{
+    background-color: @color1;
+}
+.h1,
+.label,
+.fa-github,
+.fa-twitter,
+.fa-circle {
+    color: @color2;
+}
+.container,
+.splash {
+    background-color: @color2; 
+}
+.h1,
+.h2,
+.h3,
+.h4,
+.p,
+.fa-chevron-up,
+.fa-chevron-down,
+.about-me-text {
+    color: @color3;
+}
+.navbar,
+.dropdown-menu {
+    background-color: @color3;
+}
+.label,
+.fa-user,
+.fa-square,
+.fa-square-o {
+    color: @color4;
+}

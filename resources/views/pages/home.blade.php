@@ -21,7 +21,7 @@
          @include('view.slider.right', $rightConnector)
     </div>
     <div class="col-xs-8">
-        <div class="col-xs-4 color-box profile">
+        <div class="col-xs-4 profile">
             @if (Auth::guest())
                 <a href="{{ url('/auth/login') }}">Login</a>
                 <a href="{{ url('/auth/register') }}">Register</a>
@@ -31,7 +31,7 @@
             @endif
         </div>
         <div class="col-xs-8">
-            <div class="row-fluid color-box ask">
+            <div class="row-fluid ask">
             @if(Auth::check())
                 {{ Form::open(array('url' => 'question/add')) }}
 

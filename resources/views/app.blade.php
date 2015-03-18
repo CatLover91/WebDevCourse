@@ -36,7 +36,7 @@
                                                   Nav Bar
     =====================================================================================================
     -->
-    <div class="navbar navbar-default navbar-fixed-top color-box ">
+    <div class="navbar navbar-default navbar-fixed-top">
         <nav class="top-bar" data-topbar role="navigation">
           <div class="navbar-header name">
               <h1><a href="http://www.nichol.ai" id="portfolio-link">N</a></h1>
