@@ -4,19 +4,13 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller {
 
-    
-    public function index()
-    {
-        $theQs => DB::table('questions')
-            ->orderBy('value', 'desc')
-            ->take(7);
+    public function index() {
+        $questions = Question::ordered()->getPage(0);
         
-        for($i = 0; $i < 7; $i++)
-        {
-            $theQs[$i]['content'] = substr(var_dump($theQs[$i]->content), 0, 140).' ...';
+        foreach($questions as $question) {
+            $question->content = substr($question->content, 0, 140).' ...';
         }
         
-        return view('page.home', $theQs);
+        return view('page.home', ['questions' => $questions]);
     }
-
 }

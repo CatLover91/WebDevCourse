@@ -12,8 +12,8 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('question', 'QuestionController@showQuestion');
-Route::get('user/{user_id}/profile', 'UserController@showProfile');
+Route::get('question/{question_id}', 'QuestionController@showQuestion');
+Route::get('user/{user_id}', 'UserController@showProfile');
 
 Route::post('user/{user_id}/addAvatar', 'UserController@addAvatar');
 
@@ -21,6 +21,7 @@ Route::post('question/add', 'QuestionController@addQuestion');
 Route::post('question/{question_id}/upVote', 'QuestionController@upVote');
 Route::post('question/{question_id}/downVote', 'QuestionController@downVote');
 Route::post('question/{question_id}/removeVote', 'QuestionController@removeVote');
+Route::post('question/{question_id}/changeVote', 'QuestionController@changeVote');
 
 Route::post('question/{question_id}/answer/add', 'AnswerController@addAnswer');
 Route::post('question/{question_id}/answer/{answer_id}/upVote', 'QuestionController@upVote');

@@ -22,21 +22,7 @@
             <a href="{{ url('/auth/login') }}">Login</a>
             <a href="{{ url('/auth/register') }}">Register</a>
         @else
-            @if($hasProfile)
-            <a href={{ $previous."/user/".Auth::user()->id."/profile" }}>
-                 <!--Show Profile Pic-->
-            </a>
-            @else
-            <a href={{ $previous."/user/".Auth::user()->id."/profile" }}>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-square-o fa-stack-2x"></i>
-                    <i class="fa fa-user fa-stack-1x"></i>
-                </span>
-            </a>
-            @endif
-            <a href={{ $previous."/user/".Auth::user()->id."/profile" }}>
-                 <label>{{ $username }}</label>
-            </a>
+            @include('view.profile.light', Auth::user()->id)
             <a href="{{ url('/auth/logout') }}">Logout</a>
         @endif
     </div>
@@ -56,7 +42,7 @@
                 <div class="form-group">
                     <label class="col-xs-4 control-label">Content</label>
                     <div class="col-xs-6">
-                        <textarea type="text" class="form-control" rows="20" cols="60" name="content"></textarea>
+                        <input type="textarea" class="form-control" rows="20" cols="60" name="content">
                     </div>
                 </div>
 
@@ -69,7 +55,7 @@
         @endif
         </div>
         @foreach($questions as $question)
-             @include('view.questionlite', $question)
+             @include('view.question.light', $question)
         @endforeach
     </div>
 </div>

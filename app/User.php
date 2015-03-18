@@ -22,13 +22,28 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['id', 'name', 'password'];
+	protected $fillable = ['name', 'password'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
 	 */
-	protected $hidden = ['password', 'remember_token'];
-
+	protected $hidden = ['password', 'id'];//'remember_token']; 
+    
+    public function questions() {
+        return $this->hasMany('App\Question');
+    }
+    
+    public function answers() {
+        return $this->hasMany('App\Answer');
+    }
+    
+    public function votes() {
+        return $this->hasMany('App\Vote');
+    }
+    
+    public function hasAvatar() {
+        return Storage::exists('avatars/'.this->name.'.*');
+    }
 }
