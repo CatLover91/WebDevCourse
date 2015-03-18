@@ -65,17 +65,6 @@
             </ul>
         </nav>
     </div>
-    <div class="container-fluid">
-        @if($backout)
-            @include('view.slider.left', $leftConnector)
-            <div class="col-xs-8">
-        @else
-            <div class="col-xs-10">
-        @endif
-        
-            @yield('content')
-        </div>
-        @include('view.slider.right', $rightConnector)
-    </div>
+      @yield('content')
   </body>
 </html>
