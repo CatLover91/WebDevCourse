@@ -1,12 +1,12 @@
-<div class="row-fluid color-box profile">
-    @if($hasAvatar)
-        <!--Show Profile Pic-->
+<div class="row-fluid">
+    @if($user->hasAvatar())
+        <img src="{{ $user->avatar() }}" alt="Avatar" class="img-rounded">
     @else
         <span class="fa-stack fa-lg">
             <i class="fa fa-square-o fa-stack-2x"></i>
             <i class="fa fa-user fa-stack-1x"></i>
         </span>
-        @if(Auth::user() === $id)
+        @if(Auth::user()->id === $user->id)
             <div class="about-section">
                 <div class="text-content">
                     <div class="span7 offset1">
@@ -16,7 +16,7 @@
                             </div>
                         @endif
                         <div class="secure">Upload form</div>
-                        {{ Form::open(array('url'=>'apply/upload','method'=>'POST', 'files'=>true)) }}
+                        {{ Form::open(array('url'=>'user/'.$user->id.'/addAvatar,'method'=>'POST', 'files'=>true)) }}
                         <div class="control-group">
                             <div class="controls">
                                 {{ Form::file('image') }}
@@ -34,5 +34,5 @@
             </div>
         @endif
     @endif
-    {{ $name }}
+    <h3>{{ $name }}</h3>
 </div>

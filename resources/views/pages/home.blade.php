@@ -22,40 +22,27 @@
             <a href="{{ url('/auth/login') }}">Login</a>
             <a href="{{ url('/auth/register') }}">Register</a>
         @else
-            @include('view.profile.light', Auth::user()->id)
+            @include('view.profile.light', ['user' => Auth::user())
             <a href="{{ url('/auth/logout') }}">Logout</a>
         @endif
     </div>
     <div class="col-xs-8">
         <div class="row-fluid color-box ask">
-        @if (Auth::check())
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/question/add') }}">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        @if(Auth::check())
+            {{ Form::open(array('url' => 'question/add')) }}
+                
+                {{ Form::label('title', 'Title' }}
+                {{ Form::text('title') }}
+                
+                {{ Form::label('content', 'Content' }}
+                {{ Form::textarea('content') }}
 
-                <div class="form-group">
-                    <label class="col-xs-4 control-label">Title</label>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" name="title">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-xs-4 control-label">Content</label>
-                    <div class="col-xs-6">
-                        <input type="textarea" class="form-control" rows="20" cols="60" name="content">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-xs-6 col-xs-offset-4">
-                        <button type="submit" class="btn btn-primary">Ask</button>
-                    </div>
-                </div>
-            </form>
+                {{ Form::submit('Submit', array('class'=>'send-btn')) }}
+            {{ Form::close() }}
         @endif
         </div>
         @foreach($questions as $question)
-             @include('view.question.light', $question)
+             @include('view.question.light', ['question' => $question])
         @endforeach
     </div>
 </div>

@@ -44,6 +44,20 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
     
     public function hasAvatar() {
-        return Storage::exists('avatars/'.this->name.'.*');
+        return if(Storage::exists('avatars/'.this->name.'.jpeg') && Storage::exists('avatars/'.this->name.bmp'.') && Storage::exists('avatars/'.this->name.'.png'));
+    }
+    
+    public function avatar() {
+        if(Storage::exists('avatars/'.this->name.'.jpeg'))
+            return 'avatars/'.this->name.'.jpeg';
+        } elseif(Storage::exists('avatars/'.this->name.bmp'.')
+             return 'avatars/'.this->name.'.bmp';
+        }  else {
+             return 'avatars/'.this->name.'.png';
+        }
+    }
+                 
+    public function votedOn($QorA) {
+        return $QorA->votes()->where('user_id', '=', [this->id])->first();
     }
 }

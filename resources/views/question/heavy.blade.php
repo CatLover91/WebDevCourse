@@ -8,46 +8,67 @@
             <p>{{ $question.content }}</p>
         </div>
         <div class="col-xs-12">
-            @include('view.profile.light', $question.asker_id)
+            @include('view.profile.light', ['user' => $question->user()])
         </div>
     @else
-        <div class="col-xs-2">
-            <span class="fa-stack fa-lg">
-                <i class="fa fa-square fa-stack-2x"></i>
-                <i class="fa fa-chevron-up fa-stack-1x"></i>
-            </span>
-            <label>{{ $question.vote }}</label>
-            <span class="fa-stack fa-lg">
-                <i class="fa fa-square fa-stack-2x"></i>
-                <i class="fa fa-chevron-down fa-stack-1x"></i>
-            </span>
+        <div class="col-xs-3">
+            @if(Auth::guest() || Auth::user()->id === $answer->answerer_id)
+                <label>{{ $answer.vote }}</label>
+            @else
+                @if(is_null(Auth::user()->votedOn($answer)))
+                    <!-- No Vote -->
+                    {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/upVote')) }}
+                        {{ Form::vote(false, true) }}
+                    {{ Form::close() }}
+            
+                    <label>{{ $answer.vote }}</label>
+            
+                    {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/downVote')) }}
+                        {{ Form::vote(false, false) }}
+                    {{ Form::close() }}
+                @elseif(Auth::user()->votedOn($answer)->positive)
+                    <!--if positive vote-->
+                    {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/removeVote')) }}
+                        {{ Form::vote(true, true) }}
+                    {{ Form::close() }}
+            
+                    <label>{{ $answer.vote }}</label>
+            
+                    {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/changeVote')) }}
+                        {{ Form::vote(false, false) }}
+                    {{ Form::close() }}
+                @else
+                    <!--if negative vote-->
+                    {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/changeVote')) }}
+                        {{ Form::vote(false, true) }}
+                    {{ Form::close() }}
+            
+                    <label>{{ $answer.vote }}</label>
+            
+                    {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/removeVote')) }}
+                        {{ Form::vote(true, false) }}
+                    {{ Form::close() }}
+                @else
+            @endif
         </div>
-        <div class="col-xs-10">
-            <h2>{{ $question.title }}</h2>
-            <p>{{ $question.content }}</p>
+        <div class="col-xs-9">
+            <div class="row-fluid">
+                <h2>{{ $question.title }}</h2>
+                <p>{{ $question.content }}</p>
+            </div>
+            <div class="row-fluid">
+                @include('view.profile.light', ['user => $question->user()])
+            </div>
         </div>
-        <div class="col-xs-12">
-            @include('view.profile.light', $question.asker_id)
-        </div>
-        <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="form-group">
-                <label class="col-xs-8 col-xs-offset-2 control-label">Title</label>
-                <div class="col-xs-8 col-xs-offset-2">
-                    <input type="text" class="form-control" name="title">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-xs-8 col-xs-offset-2 control-label">Content</label>
-                <div class="col-xs-8 col-xs-offset-2">
-                    <textarea type="text" class="form-control" rows="20" cols="60" name="content"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-6 col-xs-offset-3">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </form>
+        {{ Form::open(array('url' => 'question/'.$question->id.'/answer/add')) }}
+                
+            {{ Form::label('title', 'Title' }}
+            {{ Form::text('title') }}
+
+            {{ Form::label('content', 'Content' }}
+            {{ Form::textarea('content') }}
+
+            {{ Form::submit('Submit', array('class'=>'send-btn')) }}
+        {{ Form::close() }}
     @endif
 </div>

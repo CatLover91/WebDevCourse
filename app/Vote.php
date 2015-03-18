@@ -17,4 +17,6 @@ class Vote extends Model {
     public function describes() {
         return $this->morphTo();
     }
+    
+    
 }
