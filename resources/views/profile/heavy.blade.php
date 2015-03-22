@@ -1,6 +1,6 @@
 <div class="row-fluid profile" id="{{ $user->id }}">
     <div class="container">
-        @if($user->hasAvatar())
+        @if ($user->hasAvatar())
             <div class="row">
                 <div class="col-xs-6">
                     <img src="{{ $user->avatar() }}" alt="Avatar" class="img-rounded">
@@ -21,9 +21,9 @@
                     <h3>{{ $name }}</h3>
                 </div>
             </div>
-            @if(Auth::user()->id === $user->id)
+            @if (Auth::user()->id === $user->id)
                 <div class="row">
-                    @if(Session::has('success'))
+                    @if (Session::has('success'))
                         <div class="alert-box success">
                             <h2>{{ Session::get('success') }}</h2>
                         </div>
@@ -34,7 +34,7 @@
                         <div class="controls">
                             {{ Form::file('image') }}
                            <p class="errors">{{$errors->first('image')}}</p>
-                           @if(Session::has('error'))
+                           @if (Session::has('error'))
                                <p class="errors">{{ Session::get('error') }}</p>
                            @endif
                         </div>

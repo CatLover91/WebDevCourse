@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\Controller;
 
+
+use App\Question;
+use App\Answer;
+use App\Vote;
+
 class QuestionController extends Controller {
 
     

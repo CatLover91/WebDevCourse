@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Controller;
 
+use App\Question;
+use App\Answer;
+use App\Vote;
 class AnswerController extends Controller {
     
     public function addAnswer($question_id)

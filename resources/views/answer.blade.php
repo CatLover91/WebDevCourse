@@ -3,8 +3,8 @@
 @section('content')
     <div id="row-fluid color-block answer" id="{{ $answer->user_id }}">
         <div class="col-xs-2">
-            @if(Auth::user()->id === $answer->question()->user()->id)
-                @if($answer.best)
+            @if (Auth::user()->id === $answer->question()->user()->id)
+                @if ($answer.best)
                     {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/unmarkBest')) }}
                         {{ Form::best(true) }}
                     {{ Form::close() }}
@@ -14,7 +14,7 @@
                     {{ Form::close() }}
                 @endif
             @else
-                @if($answer.best)
+                @if ($answer.best)
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-square-o fa-stack-1x"></i>
                         <i class="fa fa-check fa-stack-1x"></i>
@@ -24,10 +24,10 @@
             @endif
         </div>
         <div class="col-xs-3">
-            @if(Auth::guest() || Auth::user()->id === $answer.answerer_id)
+            @if (Auth::guest() || Auth::user()->id === $answer.answerer_id)
                 <label>{{ $answer.vote }}</label>
             @else
-                @if(is_null(Auth::user()->votedOn($answer)))
+                @if (is_null(Auth::user()->votedOn($answer)))
                     <!-- No Vote -->
                     {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/upVote')) }}
                         {{ Form::vote(false, true) }}
@@ -38,7 +38,7 @@
                     {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/downVote')) }}
                         {{ Form::vote(false, false) }}
                     {{ Form::close() }}
-                @elseif(Auth::user()->votedOn($answer)->positive)
+                @elseif (Auth::user()->votedOn($answer)->positive)
                     <!--if positive vote-->
                     {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/removeVote')) }}
                         {{ Form::vote(true, true) }}

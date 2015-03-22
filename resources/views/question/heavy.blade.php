@@ -1,6 +1,6 @@
 <div class="row-fluid question" id="{{ $question->user_id }}">
     <div class="container">
-        @if(Auth::guest())
+        @if (Auth::guest())
             <div class="col-xs-3">
                 <label>{{ $question->vote }}</label>
             </div>
@@ -11,10 +11,10 @@
             </div>
         @else
             <div class="col-xs-3">
-                @if(Auth::guest() || Auth::user()->id === $answer->answerer_id)
+                @if (Auth::guest() || Auth::user()->id === $answer->answerer_id)
                     <label>{{ $answer->vote }}</label>
                 @else
-                    @if(is_null(Auth::user()->votedOn($answer)))
+                    @if (is_null(Auth::user()->votedOn($answer)))
                         <!-- No Vote -->
                         {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/upVote')) }}
                             {{ Form::vote(false, true) }}
@@ -25,7 +25,7 @@
                         {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/downVote')) }}
                             {{ Form::vote(false, false) }}
                         {{ Form::close() }}
-                    @elseif(Auth::user()->votedOn($answer)->positive)
+                    @elseif (Auth::user()->votedOn($answer)->positive)
                         <!--if positive vote-->
                         {{ Form::open(array('url' => 'question/'.$answer->question()->id.'/answer/'.$answer->id.'/removeVote')) }}
                             {{ Form::vote(true, true) }}
@@ -54,7 +54,7 @@
                 <h2>{{ $question->title }}</h2>
                 <p>{{ $question->content }}</p>
 
-                @include('view.profile.light', ['user => $question->user()])
+                @include('view.profile.light', ['user => $question->user])
             </div>
             <div class="col-xs-12">
                 {{ Form::open(array('url' => 'question/'.$question->id.'/answer/add')) }}

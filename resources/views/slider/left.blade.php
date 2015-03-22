@@ -1,4 +1,4 @@
-@if(strlen($previous) === 0)
+@if (strlen($previous) === 0)
     <div class="col-xs-2 slider-left">
     </div>
 @else

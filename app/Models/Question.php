@@ -34,7 +34,7 @@ class Question extends Model {
     //return a section of 5 questions
     public function scopeGetPage($query, $page) {
         $counter = 0;
-        $query->chunk(5, function($questions) {
+        $query->orderBy('value', 'desc')->chunk(5, function($questions) {
             if($counter === $page) {
                 return $questions;    
             }

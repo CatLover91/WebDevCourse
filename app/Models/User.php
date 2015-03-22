@@ -44,20 +44,28 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
     
     public function hasAvatar() {
-        return if(Storage::exists('avatars/'.this->name.'.jpeg') && Storage::exists('avatars/'.this->name.bmp'.') && Storage::exists('avatars/'.this->name.'.png'));
+        
+        $name = 'blah';
+        if(Storage::exists('avatars/'.$name.'.jpeg') && Storage::exists('avatars/'.$name.'.bmp') && Storage::exists('avatars/'.$name.'.png')) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     public function avatar() {
-        if(Storage::exists('avatars/'.this->name.'.jpeg'))
-            return 'avatars/'.this->name.'.jpeg';
-        } elseif(Storage::exists('avatars/'.this->name.bmp'.')
-             return 'avatars/'.this->name.'.bmp';
+        $name = 'blah';
+        if(Storage::exists('avatars/'.$name.'.jpeg')) {
+            return 'avatars/'.$name.'.jpeg';
+        } elseif(Storage::exists('avatars/'.$name.'.bmp')) {
+             return 'avatars/'.$name.'.bmp';
         }  else {
-             return 'avatars/'.this->name.'.png';
+             return 'avatars/'.$name.'.png';
         }
     }
                  
     public function votedOn($QorA) {
-        return $QorA->votes()->where('user_id', '=', [this->id])->first();
+        $id = 'blah';
+        return $QorA->votes()->where('user_id', '=', $id)->first();
     }
 }
