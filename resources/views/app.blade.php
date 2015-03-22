@@ -44,24 +44,13 @@
 
           <ul class="nav navbar-nav navbar-right">
             <!-- Right Nav Section -->
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    <label>connect</label>
-                    <span class="fa fa-lg fa-anchor"></span> 
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="http://github.com/catlover91" title="Github"><i class="fa fa-2x fa-github"></i></a></li>
-                  <li><a href="http://twitter.com/me0wmixgg" title="Twitter"><i class="fa fa-2x fa-twitter"></i></a></li>
-                  <li>
-                    <a href="http://about.me/kranoscorp" title="About.me">
-                      <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <strong class="fa-stack-1x about-me-text">Me</strong>
-                      </span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+                @if (Auth::guest())
+                    <li><a href="{{ url('/auth/login') }}">Login</a></li>
+                    <li><a href="{{ url('/auth/register') }}">Register</a></li>
+                @else
+                    @include('profile.light', ['user' => Auth::user()])
+                    <li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+                @endif
             </ul>
         </nav>
     </div>
