@@ -34,6 +34,8 @@ Route::post('question/{question_id}/answer/{answer_id}/removeVote', 'QuestionCon
 Route::post('question/{question_id}/answer/{answer_id}/markBest', 'QuestionController@markBest');
 Route::post('question/{question_id}/answer/{answer_id}/unmarkBest', 'QuestionController@unmarkBest');
 
+Route::resource('photo', 'PhotoController');
+
 /*Route::controllers([
 	'auth' => 'AuthController',
 	// dont need email verification
