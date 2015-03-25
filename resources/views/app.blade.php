@@ -54,15 +54,12 @@
             </ul>
         </nav>
     </div>
-    <div class="container-fluid">
+    <div class="container">
       <div class="span2">
         @include('slider.left', ['previous' => $leftConnector])
     </div>
-        <div class="span8">
+        <div class="span10">
             @yield('content')
-        </div>
-        <div class="span2">
-            @include('slider.right')
         </div>
       </div>
   </body>

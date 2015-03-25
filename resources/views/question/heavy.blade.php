@@ -1,4 +1,4 @@
-<div class="row-fluid question" id="{{ $question->user_id }}">
+<div class="row question" id="{{ $question->user_id }}">
     <div class="container">
         @include ('question.vote', ['question' => $question])
         @if (Auth::guest())

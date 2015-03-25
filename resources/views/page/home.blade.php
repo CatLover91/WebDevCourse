@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="span8">
+    <div class="col-xs-10">
         @if (Auth::check())
             <div class="row ask">
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/question/add') }}">

@@ -24,11 +24,11 @@
         @include ('answer.vote', ['answer' => $answer])
     </div>
     <div class="col-xs-7">
-        <div class="row-fluid">
+        <div class="row">
             <h4>{{ $answer.title }}</h4>
             <p>{{ $answer.content }}</p>
         </div>
-        <div class="row-fluid">
+        <div class="row">
             @include('view.profile.light', ['user' => $answer->user()])
         </div>
     </div>
