@@ -1,23 +1,17 @@
-<?php
+<?php namespace App\Http\Controllers;
 
-class HomeController extends BaseController {
+use App\Http\Controllers\Controller;
+use App\Question;
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
+class HomeController extends Controller {
 
-	public function showWelcome()
-	{
-		return View::make('hello');
-	}
-
+    public function index() {
+        $questions = Question::orderBy('value', 'desc')->get();
+        
+        foreach($questions as $question) {
+            $question->content = substr($question->content, 0, 140).' ...';
+        }
+        
+        return view('page.home', ['questions' => $questions, 'leftConnector' => null]);
+    }
 }
