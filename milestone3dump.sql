@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2015 at 04:23 PM
+-- Generation Time: Mar 30, 2015 at 04:53 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -43,6 +43,28 @@ CREATE TABLE IF NOT EXISTS `answers` (
 INSERT INTO `answers` (`id`, `user_id`, `question_id`, `title`, `content`, `value`, `best`) VALUES
 (1, 15, 1, 'Omg dude', 'whatta nerd', 0, 0),
 (2, 5, 1, '???', 'I think u love cats too much', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `connections`
+--
+
+CREATE TABLE IF NOT EXISTS `connections` (
+  `tags_id` int(6) unsigned NOT NULL,
+  `question_id` int(6) unsigned NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `connections`
+--
+
+INSERT INTO `connections` (`tags_id`, `question_id`) VALUES
+(1, 1),
+(1, 9),
+(2, 5),
+(2, 6),
+(2, 7);
 
 -- --------------------------------------------------------
 
@@ -93,28 +115,6 @@ CREATE TABLE IF NOT EXISTS `tags` (
 INSERT INTO `tags` (`id`, `content`) VALUES
 (1, 'cats'),
 (2, 'how to');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tag_connections`
---
-
-CREATE TABLE IF NOT EXISTS `tag_connections` (
-  `tags_id` int(6) unsigned NOT NULL,
-  `question_id` int(6) unsigned NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tag_connections`
---
-
-INSERT INTO `tag_connections` (`tags_id`, `question_id`) VALUES
-(1, 1),
-(1, 9),
-(2, 5),
-(2, 6),
-(2, 7);
 
 -- --------------------------------------------------------
 
@@ -175,6 +175,12 @@ ALTER TABLE `answers`
  ADD PRIMARY KEY (`id`), ADD KEY `answerer_id` (`user_id`,`question_id`);
 
 --
+-- Indexes for table `connections`
+--
+ALTER TABLE `connections`
+ ADD KEY `tags_id` (`tags_id`,`question_id`);
+
+--
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
@@ -185,12 +191,6 @@ ALTER TABLE `questions`
 --
 ALTER TABLE `tags`
  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tag_connections`
---
-ALTER TABLE `tag_connections`
- ADD KEY `tags_id` (`tags_id`,`question_id`);
 
 --
 -- Indexes for table `users`
