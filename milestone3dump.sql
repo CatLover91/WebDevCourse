@@ -21,8 +21,8 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-CREATE DATABASE IF NOT EXISTS `ngcs48` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `ngcs48`;
+CREATE DATABASE IF NOT EXISTS `ngcs418` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `ngcs418`;
 --
 -- Table structure for table `answers`
 --
