@@ -1,0 +1,68 @@
+@import "bootstrap/bootstrap";
+
+@btn-font-weight: 300;
+@font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
+
+body, label, .checkbox label {
+	font-weight: 300;
+}
+
+.randomColor() {
+    @random
+}
+
+.loop(@counter) when (@counter > 0) {
+    .loop((@counter - 1));
+    #@{counter} {
+        .randomColor();
+        @color1 = @random;
+    }
+}
+
+@color2 = #FFFFFF;
+@color3 = #000000;
+@color4 = #BBBBBB;
+
+.fa-chevron-up .voted,
+.fa-chevron-down .voted,
+.fa-check,
+.slider-left {
+    color: @color1;
+} 
+.question,
+.answer,
+.profile,
+.slider-left{
+    background-color: @color1;
+}
+.h1,
+.label,
+.fa-github,
+.fa-twitter,
+.fa-circle {
+    color: @color2;
+}
+.container,
+.splash {
+    background-color: @color2; 
+}
+.h1,
+.h2,
+.h3,
+.h4,
+.p,
+.fa-chevron-up,
+.fa-chevron-down,
+.about-me-text {
+    color: @color3;
+}
+.navbar,
+.dropdown-menu {
+    background-color: @color3;
+}
+.label,
+.fa-user,
+.fa-square,
+.fa-square-o {
+    color: @color4;
+}
