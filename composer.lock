@@ -4,8 +4,62 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "db5fcfa107fb003c4ebb333af60a545d",
+    "hash": "dfc0bfda42d3746b4f36f23c897cfcb2",
     "packages": [
+        {
+            "name": "barryvdh/laravel-debugbar",
+            "version": "v1.8.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-debugbar.git",
+                "reference": "d510da02fef2381c0946185bddd6271b73e60169"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/d510da02fef2381c0946185bddd6271b73e60169",
+                "reference": "d510da02fef2381c0946185bddd6271b73e60169",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.*",
+                "maximebf/debugbar": "~1.10.2",
+                "php": ">=5.3.0",
+                "symfony/finder": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-v1.x": "1.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\Debugbar\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "PHP Debugbar integration for Laravel",
+            "keywords": [
+                "debug",
+                "debugbar",
+                "laravel",
+                "profiler",
+                "webprofiler"
+            ],
+            "time": "2015-02-04 09:52:12"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "1.0.2",
@@ -351,6 +405,62 @@
                 "laravel"
             ],
             "time": "2015-02-11 20:37:15"
+        },
+        {
+            "name": "maximebf/debugbar",
+            "version": "v1.10.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximebf/php-debugbar.git",
+                "reference": "7b2006e6e095126b5a061ec33fca3d90ea8a8219"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/7b2006e6e095126b5a061ec33fca3d90ea8a8219",
+                "reference": "7b2006e6e095126b5a061ec33fca3d90ea8a8219",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/log": "~1.0",
+                "symfony/var-dumper": "~2.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "kriswallsmith/assetic": "The best way to manage assets",
+                "monolog/monolog": "Log using Monolog",
+                "predis/predis": "Redis storage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.10-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "DebugBar": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                }
+            ],
+            "description": "Debug bar in the browser for php application",
+            "homepage": "https://github.com/maximebf/php-debugbar",
+            "keywords": [
+                "debug"
+            ],
+            "time": "2015-02-05 07:51:20"
         },
         {
             "name": "monolog/monolog",
@@ -1703,6 +1813,66 @@
             "description": "Symfony Translation Component",
             "homepage": "http://symfony.com",
             "time": "2015-01-03 15:23:51"
+        },
+        {
+            "name": "symfony/var-dumper",
+            "version": "v2.6.6",
+            "target-dir": "Symfony/Component/VarDumper",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-dumper.git",
+                "reference": "aafae00236e147568832de3c65ccb94cfc836278"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/aafae00236e147568832de3c65ccb94cfc836278",
+                "reference": "aafae00236e147568832de3c65ccb94cfc836278",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "~2.7"
+            },
+            "suggest": {
+                "ext-symfony_debug": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "Resources/functions/dump.php"
+                ],
+                "psr-0": {
+                    "Symfony\\Component\\VarDumper\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                }
+            ],
+            "description": "Symfony mechanism for exploring and dumping PHP variables",
+            "homepage": "http://symfony.com",
+            "keywords": [
+                "debug",
+                "dump"
+            ],
+            "time": "2015-03-31 08:12:29"
         }
     ],
     "packages-dev": [],

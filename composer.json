@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"stevenmaguire/zurb-foundation-laravel": "dev-master"
+		"stevenmaguire/zurb-foundation-laravel": "dev-master",
+		"barryvdh/laravel-debugbar": "~1.8"
 	},
 	"autoload": {
 		"classmap": [
