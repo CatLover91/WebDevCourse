@@ -1,6 +1,8 @@
-<?php
+<?php namespace App\Controllers;
 
-class HomeController extends BaseController {
+use app\modeels\User as User;
+
+class HomeController extends \BaseController {
 
     public function index() {
         $questions = Question::orderBy('value', 'desc')->get();
@@ -9,6 +11,6 @@ class HomeController extends BaseController {
             $question->content = substr($question->content, 0, 140).' ...';
         }
         
-        return view('page.home', ['questions' => $questions, 'leftConnector' => null]);
-    }
+        return View::make('page.home', ['questions' => $questions, 'leftConnector' => null]);
+    } 
 }

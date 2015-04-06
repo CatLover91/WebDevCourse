@@ -15,7 +15,7 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
-Route::get('/', 'HomeController@index');
+Route::get('/', 'app/controllers/HomeController@index');
 Route::get('question/{question_id}', 'QuestionController@showQuestion');
 Route::get('user/{user_id}', 'UserController@showProfile');
 
