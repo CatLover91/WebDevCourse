@@ -22,6 +22,8 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+CREATE DATABASE IF NOT EXISTS ngcs418
+USE ngcs418
 --
 -- Table structure for table `answers`
 --
