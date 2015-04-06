@@ -1,6 +1,6 @@
-<?php namespace app\controllers;
+<?php
 
-class UserController extends \BaseController {
+class UserController extends BaseController {
 
 	/**
 	 * Show the application welcome screen to the user.

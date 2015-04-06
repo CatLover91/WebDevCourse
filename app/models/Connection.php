@@ -1,6 +1,4 @@
-<?php namespace App;
-
-use Illuminate\Database\Eloquent;
+<?php
 
 class Connection extends Eloquent {
     

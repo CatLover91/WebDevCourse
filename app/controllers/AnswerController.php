@@ -1,11 +1,6 @@
-<?php namespace app\controllers;
+<?php
 
-use app\controllers\BaseController;
-
-use app\models\Question;
-use app\models\Answer;
-use app\models\Vote;
-class AnswerController extends \BaseController {
+class AnswerController extends BaseController {
     
     public function addAnswer($question_id)
     {

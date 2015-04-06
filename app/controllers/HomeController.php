@@ -1,9 +1,6 @@
-<?php namespace app\controllers;
+<?php
 
-use app\controllers\BaseController;
-use app\Question;
-
-class HomeController extends \BaseController {
+class HomeController extends BaseController {
 
     public function index() {
         $questions = Question::orderBy('value', 'desc')->get();

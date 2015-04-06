@@ -1,13 +1,6 @@
-<?php namespace app\controllers;
+<?php
 
-use app\controllers\BaseController;
-
-
-use app\models\Question;
-use app\models\Answer;
-use app\models\Vote;
-
-class QuestionController extends \BaseController {
+class QuestionController extends BaseController {
 
     
     public function showQuestion($id) {
