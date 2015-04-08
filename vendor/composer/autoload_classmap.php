@@ -8,7 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Answer' => $baseDir . '/app/models/Answer.php',
     'AnswerController' => $baseDir . '/app/controllers/AnswerController.php',
-    'App\\Controllers\\HomeController' => $baseDir . '/app/controllers/HomeController.php',
     'Barryvdh\\Debugbar\\Console\\ClearCommand' => $vendorDir . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
     'Barryvdh\\Debugbar\\Console\\PublishCommand' => $vendorDir . '/barryvdh/laravel-debugbar/src/Console/PublishCommand.php',
     'Barryvdh\\Debugbar\\Controllers\\AssetController' => $vendorDir . '/barryvdh/laravel-debugbar/src/Controllers/AssetController.php',
@@ -1703,4 +1702,5 @@ return array(
     'Whoops\\Run' => $vendorDir . '/filp/whoops/src/Whoops/Run.php',
     'Whoops\\Util\\Misc' => $vendorDir . '/filp/whoops/src/Whoops/Util/Misc.php',
     'Whoops\\Util\\TemplateHelper' => $vendorDir . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+    'app\\controllers\\HomeController' => $baseDir . '/app/controllers/HomeController.php',
 );

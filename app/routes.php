@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function()
+/*Route::get('/', function()
 {
 	return View::make('hello');
-});
-Route::get('/', 'app/controllers/HomeController@index');
+});*/
+Route::get('/', 'HomeController@index');
 Route::get('question/{question_id}', 'QuestionController@showQuestion');
 Route::get('user/{user_id}', 'UserController@showProfile');
 
